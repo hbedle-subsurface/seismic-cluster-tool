@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting Started</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1d2330; --muted: #5b6475; --line: #dde2ea;
+    --card: #f5f7fa; --accent: #0a7f45; --warn-bg: #fff6e0; --warn: #8a5a00;
+    --code-bg: #eef1f5; --btn: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d0d1a; --fg: #e6e8f0; --muted: #a3a9bb; --line: #2a2d44;
+      --card: #15172a; --accent: #00d27a; --warn-bg: #2b2412;
+      --warn: #f2c063; --code-bg: #1d2036; --btn: #262a44;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0d1a; --fg: #e6e8f0; --muted: #a3a9bb; --line: #2a2d44;
+    --card: #15172a; --accent: #00d27a; --warn-bg: #2b2412; --warn: #f2c063;
+    --code-bg: #1d2036; --btn: #262a44;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 840px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; line-height: 1.25; }
+  h2 { font-size: 1.3rem; margin: 40px 0 10px; padding-top: 10px;
+       border-top: 1px solid var(--line); }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; }
+  p.lead { color: var(--muted); margin-top: 6px; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px;
+         font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+         font-size: .9em; overflow-wrap: anywhere; }
+  .cmd { position: relative; margin: 10px 0; }
+  .cmd pre { background: var(--code-bg); margin: 0; padding: 12px 74px 12px 12px;
+             border-radius: 6px; overflow-x: auto; font-size: .9em;
+             font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+             white-space: pre-wrap; overflow-wrap: anywhere; }
+  .cmd button { position: absolute; top: 8px; right: 8px; font: inherit;
+                font-size: .8em; padding: 3px 10px; border-radius: 5px;
+                border: 1px solid var(--line); background: var(--btn);
+                color: var(--fg); cursor: pointer; }
+  ol, ul { padding-left: 1.3em; }
+  li { margin: 5px 0; }
+  .card { background: var(--card); border: 1px solid var(--line);
+          border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+  .warn { background: var(--warn-bg); border-left: 4px solid var(--warn);
+          padding: 10px 14px; border-radius: 4px; margin: 14px 0; }
+  .ok { color: var(--accent); font-weight: 600; }
+  .muted { color: var(--muted); font-size: .93em; }
+  table { border-collapse: collapse; width: 100%; font-size: .95em; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px;
+           border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  .tbl { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+<h1>Seismic Facies Clustering Tool — Getting Started</h1>
+<p class="lead">Version 6 · unsupervised facies analysis of <b>SEG-Y</b>
+attribute volumes (3D) or lines (2D): check and clean the data, reduce dimensions, cluster,
+compare, and export only the models you choose as SEG-Y files.</p>
+
+<div class="card">
+<b>Two ways to use it — same tool, same steps:</b>
+<div class="tbl"><table style="margin-top:6px">
+<tr><th></th><th>Web version</th><th>Downloadable version (Windows)</th></tr>
+<tr><td>Start</td><td>Open <a href="https://hbedle-subsurface.github.io/seismic-cluster-tool/">https://hbedle-subsurface.github.io/seismic-cluster-tool/</a></td>
+    <td>Download the zip from <a href="https://github.com/hbedle-subsurface/seismic-cluster-tool/releases/latest">https://github.com/hbedle-subsurface/seismic-cluster-tool/releases/latest</a>,
+        unzip, double-click <code>Start Seismic Cluster Tool.bat</code></td></tr>
+<tr><td>Install</td><td>Nothing</td><td>Nothing — Python is included</td></tr>
+<tr><td>Your files</td><td>Added to the page with <i>Browse files</i>;
+        results come back as downloads</td>
+    <td>Read from a folder; results written next to them</td></tr>
+<tr><td>Data size</td><td>Up to about 600&nbsp;MB for all files together
+        (crop to your interval of interest); above about 1,000&nbsp;MB the upload can stall or the tab crash, and loading is blocked</td><td>Limited only by your computer's memory</td></tr>
+<tr><td>UMAP</td><td>Not available (it cannot run in a web page)</td><td>Included</td></tr>
+<tr><td>Speed</td><td>Slower (one processor core)</td><td>Full speed</td></tr>
+</table></div>
+<p class="muted" style="margin:8px 0 0">Both versions keep your data on your
+own computer. The web version runs entirely inside your browser tab — the
+files you add are never uploaded anywhere.</p>
+</div>
+
+<h2>1 · Web version</h2>
+<ol>
+  <li>Open the link above in Chrome, Edge or Firefox (a computer, not a
+      phone). The first visit downloads about 90&nbsp;MB and takes up to a
+      minute; later visits are faster.</li>
+  <li><b>Step 2</b> in the sidebar: <i>Browse files</i> and add your SEG-Y
+      attribute volumes (and the amplitude volume, if you want it behind the
+      clusters). Check the inline / crossline byte locations — the
+      <i>header viewer</i> helps if you are unsure.</li>
+  <li>Pick the attributes, click <b>Load attributes</b>, and work through
+      the tabs left to right.</li>
+  <li>On the <b>Export</b> tab, export, then save each file with its
+      download button. Save your session too (sidebar, Step 7) — load it
+      later together with the same SEG-Y files to carry on.</li>
+</ol>
+<div class="warn">Closing or reloading the tab clears everything that is not
+downloaded. Browsers allow a web page about 2&nbsp;GB of memory in total, so
+keep all files together to about 600&nbsp;MB: crop large volumes first (the
+time range saves the most), use fewer attributes, or use the downloadable
+version.</div>
+
+<h2>2 · Downloadable version (Windows)</h2>
+<ol>
+  <li>Download <code>SeismicClusterTool-…-windows-x64.zip</code> from the
+      link above (under <i>Assets</i>).</li>
+  <li>Right-click the zip → <b>Extract All…</b> (do not run it from inside
+      the zip). Any folder works, e.g. <code>Documents</code>.</li>
+  <li>Double-click <code>Start Seismic Cluster Tool.bat</code>. A black
+      window opens, then the tool opens in your browser. Keep the black
+      window open while you work; close it to stop the tool.</li>
+</ol>
+<div class="warn"><b>“Windows protected your PC”</b> on the first start:
+click <b>More info</b> → <b>Run anyway</b>. This appears because the tool is
+new and not yet code-signed.</div>
+<h3>New versions</h3>
+<p>When a new version is out, the tool shows a note under its title with a
+download link. Unzip the new version next to the old one and use that;
+your session files keep working. Delete the old folder when you are happy.</p>
+
+<h2>3 · SEG-Y tips</h2>
+<ul>
+  <li>All attribute volumes must be on the <b>same grid</b> (same inlines,
+      crosslines and time samples) — e.g. all computed from one seismic
+      volume.</li>
+  <li>Inline / crossline numbers are read from the trace headers (SEG-Y
+      standard bytes 189 / 193). If the grid summary in the sidebar looks
+      wrong (one inline, mostly empty), open the <b>header viewer</b> →
+      <i>Find inline / crossline bytes</i>.</li>
+  <li><b>2D lines:</b> choose <i>Survey type: 2D line</i> in Step 2. The tool
+      then asks for one trace-number byte instead (the CDP number, byte 21,
+      by default; if that field is empty, traces are taken in file order).
+      Work on one 2D line at a time: all attributes must come from the same
+      line. The line is shown as a section; time slices and crosslines need a
+      3D volume.</li>
+  <li>Any trace order and missing traces are fine. IBM or IEEE floats and
+      integer formats are read; outputs are always IEEE float (format 5) with
+      your first file's headers.</li>
+</ul>
+
+<h2>4 · If something goes wrong</h2>
+<div class="tbl"><table>
+<tr><th>What you see</th><th>What to do</th></tr>
+<tr><td>Web version stays on “Starting Python…”</td>
+    <td>Wait a minute on the first visit. Otherwise reload; use an up-to-date
+        Chrome, Edge or Firefox; some school networks block large
+        downloads — try another network.</td></tr>
+<tr><td>The tab crashes (“This page is having a problem”, “Aw, Snap”,
+        STATUS_ACCESS_VIOLATION), shows a MemoryError, or becomes very slow</td>
+    <td>The page ran out of memory. Reload, then use smaller files (crop the
+        time range, fewer attributes), lower the samples held in memory
+        (Step 4), or use the downloadable version.</td></tr>
+<tr><td>“Windows protected your PC”</td><td>More info → Run anyway.</td></tr>
+<tr><td>The black window closes at once</td>
+    <td>The zip was not extracted — extract it first (step 2.2).</td></tr>
+<tr><td>Grid looks wrong</td><td>Check the header bytes (section 3).</td></tr>
+</table></div>
+
+<p class="muted" style="margin-top:40px">Built for teaching by Dr. April Moreno-Ward and
+Dr. Heather Bedle, University of Oklahoma, with the
+<a href="https://www.ou.edu/mcee/labs/aaspi">AASPI</a> consortium. Licensed
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</main>
+</body>
+</html>

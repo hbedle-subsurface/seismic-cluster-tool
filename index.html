@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--
+  Privacy, enforced by the browser: this page may only load files from this
+  site and may not send anything anywhere else (connect-src 'self').
+  'wasm-unsafe-eval' / 'unsafe-eval' are needed to run Python (Pyodide).
+  The only outside addresses allowed are GoatCounter's (gc.zgo.at and
+  hbedle.goatcounter.com), used by assets/count.js — the same file as every
+  other teaching site — to count one page view per load: no cookie, no
+  identifier, nothing from inside the tool. It skips local copies and
+  honours Do Not Track.
+  Streamlit also prefetches figure downloads from https://stlite.invalid —
+  not a real server (.invalid never exists); stlite serves those from
+  inside the page, so the policy blocks the stray prefetch harmlessly.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://gc.zgo.at; worker-src 'self' blob: data:; connect-src 'self' blob: data: https://hbedle.goatcounter.com; img-src 'self' blob: data: https://hbedle.goatcounter.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Seismic Facies Clustering Tool</title>
+<link rel="stylesheet" href="vendor/stlite/stlite.css">
+<style>
+  :root { --bg: #ffffff; --fg: #1f2933; --muted: #5f6b7a; --rule: #d9dee5; --accent: #2f6fb3; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1117; --fg: #e6e9ef; --muted: #9aa4b2; --rule: #2b313c; --accent: #7fb0e8; }
+  }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); }
+  #boot { max-width: 760px; margin: 12vh auto 0; padding: 0 16px;
+          font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #boot h1 { font-size: 1.6rem; margin: 0 0 .25rem; }
+  #boot .v { color: var(--muted); margin: 0 0 1.5rem; }
+  #boot .bar { height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+  #boot .bar i { display: block; height: 100%; width: 30%; background: var(--accent);
+                 animation: slide 1.4s ease-in-out infinite; }
+  @keyframes slide { 0% { margin-left: -30%; } 100% { margin-left: 100%; } }
+  #boot .note { color: var(--muted); font-size: .9rem; margin-top: 1rem; }
+  #boot footer { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 1rem;
+                 color: var(--muted); font-size: .8rem; }
+  #boot a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div id="root">
+  <div id="boot">
+    <h1>🧭 Seismic Facies Clustering Tool</h1>
+    <p class="v">Version 6.4 · web version</p>
+    <div class="bar"><i></i></div>
+    <p class="note">Starting Python in your browser… The first visit downloads
+      about 90&nbsp;MB from this site (later visits are faster). Your SEG-Y
+      files are opened inside this tab and are never sent anywhere.
+      New here? <a href="getting_started.html">Getting started</a>.</p>
+    <noscript><p><strong>This tool needs JavaScript.</strong></p></noscript>
+    <footer>
+      Built for teaching by Dr. April Moreno-Ward and Dr. Heather Bedle,
+      University of Oklahoma, with the
+      <a href="https://www.ou.edu/mcee/labs/aaspi" rel="noopener noreferrer">AASPI</a>
+      consortium.<br>
+      Licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+      rel="noopener noreferrer">CC BY-SA 4.0</a>.
+      Nothing you do in a module leaves your browser.
+      <a href="open_source.html">Open-source components</a>.
+    </footer>
+  </div>
+</div>
+<script type="module">
+import { mount } from "./vendor/stlite/stlite.js";
+
+mount(
+  {
+    entrypoint: "seismic_cluster_tool.py",
+    files: {
+  "core/__init__.pyc": {
+    "url": "app/core/__init__.pyc"
+  },
+  "core/analysis.pyc": {
+    "url": "app/core/analysis.pyc"
+  },
+  "core/app_main.pyc": {
+    "url": "app/core/app_main.pyc"
+  },
+  "core/colors.pyc": {
+    "url": "app/core/colors.pyc"
+  },
+  "core/export.pyc": {
+    "url": "app/core/export.pyc"
+  },
+  "core/footer.pyc": {
+    "url": "app/core/footer.pyc"
+  },
+  "core/iplots.pyc": {
+    "url": "app/core/iplots.pyc"
+  },
+  "core/labels.pyc": {
+    "url": "app/core/labels.pyc"
+  },
+  "core/methods/__init__.pyc": {
+    "url": "app/core/methods/__init__.pyc"
+  },
+  "core/methods/base.pyc": {
+    "url": "app/core/methods/base.pyc"
+  },
+  "core/methods/clusterers.pyc": {
+    "url": "app/core/methods/clusterers.pyc"
+  },
+  "core/methods/gtm.pyc": {
+    "url": "app/core/methods/gtm.pyc"
+  },
+  "core/methods/reducers.pyc": {
+    "url": "app/core/methods/reducers.pyc"
+  },
+  "core/methods/som.pyc": {
+    "url": "app/core/methods/som.pyc"
+  },
+  "core/pipeline.pyc": {
+    "url": "app/core/pipeline.pyc"
+  },
+  "core/plots.pyc": {
+    "url": "app/core/plots.pyc"
+  },
+  "core/rules.pyc": {
+    "url": "app/core/rules.pyc"
+  },
+  "core/runtime.pyc": {
+    "url": "app/core/runtime.pyc"
+  },
+  "core/segy_io.pyc": {
+    "url": "app/core/segy_io.pyc"
+  },
+  "core/segy_np.pyc": {
+    "url": "app/core/segy_np.pyc"
+  },
+  "core/session.pyc": {
+    "url": "app/core/session.pyc"
+  },
+  "core/update.pyc": {
+    "url": "app/core/update.pyc"
+  },
+  "core/version.pyc": {
+    "url": "app/core/version.pyc"
+  },
+  "seismic_cluster_tool.py": {
+    "url": "app/seismic_cluster_tool.py"
+  }
+},
+    requirements: ["numpy", "pandas", "scipy", "scikit-learn", "matplotlib", "scikit-image", "joblib", "plotly"],
+    pyodideUrl: new URL("vendor/pyodide/pyodide.mjs", window.location.href).href,
+    streamlitConfig: {
+      "browser.gatherUsageStats": false,
+      "global.disableWidgetStateDuplicationWarning": true,
+      "server.maxUploadSize": 2000,
+      "client.toolbarMode": "minimal"
+    },
+    env: { "SCT_BROWSER": "1" }
+  },
+  document.getElementById("root")
+);
+</script>
+<script src="assets/count.js"></script>
+</body>
+</html>
