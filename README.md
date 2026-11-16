@@ -25,8 +25,12 @@ Built for teaching by Dr. April Moreno-Ward, Dr. Heather Bedle, Matheus Nilo,
 Aniq Ahmad, and Hilmi Putra, University of Oklahoma, with the
 [AASPI](https://www.ou.edu/mcee/labs/aaspi) consortium.
 
-**To cite:** A. Moreno-Ward, H. Bedle, M. Nilo, A. Ahmad, and H. Putra, 2026,
-Seismic Facies Clustering Tool (version 6.7): SSRN, [article link to follow].
+**To cite:** Moreno-Ward, A., H. Bedle, M. Nilo, A. Ahmad, and H. Putra, 2026,
+How seismic facies clustering actually works: An interactive tool for learning
+attribute preparation, dimension reduction, and unsupervised classification:
+SSRN preprint, doi: [10.2139/ssrn.7687801](https://doi.org/10.2139/ssrn.7687801).
+
+📄 Read the paper on SSRN: https://ssrn.com/abstract=7687801
 
 Free to use, including in teaching and research. If you use it in a course,
 a talk, or a publication, please credit the tool and link back to it.
